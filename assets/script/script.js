@@ -23,7 +23,21 @@ function weatherForecast() {
 function actualWeather(latParam, lonParam) {
     fetch('http://api.openweathermap.org/data/2.5/forecast?lat=' + latParam + '&lon=' + lonParam + '&appid=456382b69ba78bc0d18ae825d9b6baff')
         .then((response) => response.json())
-        .then((data) => console.log(data));
+        .then((data) => {
+            console.log(data)
+            var tempToday = document.createElement("p")
+            tempToday.innerHTML = "Temp: " + data.list[0].main.temp
+            rightColumn.appendChild(tempToday)
+
+            var windToday = document.createElement("p")
+            windToday.innerHTML = "Wind: " + data.list[0].wind.speed
+            rightColumn.appendChild(windToday)
+
+            var humidityToday = document.createElement("p")
+            humidityToday.innerHTML = "Humidity: " + data.list[0].main.humidity
+            rightColumn.appendChild(humidityToday)
+        });
+
 
 }
 function displayTodaysWeather(dataParameter) {
@@ -32,8 +46,7 @@ function displayTodaysWeather(dataParameter) {
     var cityNameEl = document.createElement("p")
     cityNameEl.innerHTML = dataParameter[0].name + " " + currentDate
     rightColumn.appendChild(cityNameEl)
-    var tempToday = document.createElement("p")
-    // tempToday.innerHTML = 
+
 }
 
 searchButton.addEventListener("click", weatherForecast)

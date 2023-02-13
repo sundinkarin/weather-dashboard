@@ -2,6 +2,7 @@
 var apiKey = "fb37deb34ed0a161369c78079dba7788"
 var searchButton = document.querySelector("#submit")
 var rightColumn = document.querySelector(".rightColumn")
+var fiveDayForecastEl = document.querySelector(".fiveDayForecast")
 
 function weatherForecast() {
     event.preventDefault()
@@ -36,6 +37,22 @@ function actualWeather(latParam, lonParam) {
             var humidityToday = document.createElement("p")
             humidityToday.innerHTML = "Humidity: " + data.list[0].main.humidity
             rightColumn.appendChild(humidityToday)
+
+
+            // /5 day forecast
+            //create a div container then set to be equal to contents, append to HTML div container 
+            for (var i = 4; i < data.list.length; i = i + 8) {
+
+
+                var weatherCard = document.createElement("div")
+                weatherCard.innerHTML = `
+       date: ${data.list[i].dt_txt}
+       temp: ${data.list[i].main.temp}
+       wind:${data.list[i].wind.speed}
+       humidity: ${data.list[i].main.humidity}
+       `
+                fiveDayForecastEl.appendChild(weatherCard)
+            }
         });
 
 

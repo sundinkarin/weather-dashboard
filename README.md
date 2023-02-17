@@ -71,4 +71,4 @@ You are required to submit BOTH of the following for review:
 
 The URL of the functional, deployed application. https://sundinkarin.github.io/weather-dashboard/
 
-The URL of the GitHub repository. Give the repository a unique name and include a README describing the project.
+The URL of the GitHub repository. Give the repository a unique name and include a README describing the project. https://github.com/sundinkarin/weather-dashboard
